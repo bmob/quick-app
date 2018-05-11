@@ -1,6 +1,6 @@
 {
   "package": "com.application.demo",
-  "name": "test1",
+  "name": "testk9",
   "versionName": "1.0.0",
   "versionCode": "1",
   "minPlatformVersion": "101",
@@ -13,6 +13,18 @@
       "name": "system.router"
     },
     {
+      "name": "system.request"
+    },
+    {
+      "name": "system.notification"
+    },
+    {
+      "name": "system.fetch"
+    },
+    {
+      "name": "system.storage"
+    },
+    {
       "name": "system.shortcut"
     }
   ],
@@ -22,15 +34,15 @@
     }
   ],
   "config": {
-    "logLevel": "off"
+    "logLevel": "debug"
   },
   "router": {
     "entry": "Demo",
     "pages": {
-      "Demo": {
+      "DemoDetail": {
         "component": "index"
       },
-      "DemoDetail": {
+      "Demo": {
         "component": "index"
       },
       "About": {
@@ -44,14 +56,14 @@
     "menu": true,
     "pages": {
       "Demo": {
-        "titleBarText": "示例页",
-        "menu": false
+        "titleBarText": "Bmob后端云",
+        "menu": true
       },
       "DemoDetail": {
-        "titleBarText": "详情页"
+        "titleBarText": "Bmob后端云-详情页"
       },
       "About": {
-        "menu": false
+        "menu": true
       }
     }
   }

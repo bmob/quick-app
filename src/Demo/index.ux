@@ -1,17 +1,108 @@
 <template>
   <!-- template里只能有一个根节点 -->
-  <div class="demo-page">
-    <text class="title">欢迎打开{{title}}</text>
-    <!-- 点击跳转详情页 -->
-    <input class="btn" type="button" value="跳转到详情页" onclick="routeDetail">
+  <div id="app">
+
+    <!-- <div class="iheader"> -->
+
+    <list class="iheader">
+      <list-item class="list-top">
+        <text></text>
+      </list-item>
+      <list-item>
+        <text>无需再造小程序后端服务</text>
+      </list-item>
+      <list-item>
+        <text>轻松拥有开发中需要的各种后端能力</text>
+      </list-item>
+    </list>
+    <!-- </div> -->
+
+
+    <list class="container">
+      <list-item class="list-top">
+        <text></text>
+      </list-item>
+      <list-item>
+        <label>用户名:</label>
+        <div class="list-input">
+          <input class="" type="text" id="username" onchange="getU" name="username" value="" placeholder="请输入用户名">
+        </div>
+      </list-item>
+      <list-item>
+        <label>密码:</label>
+        <div class="list-input">
+          <input class="" type="password" value="" id="password" onchange="getP" name="password" placeholder="请输入密码">
+        </div>
+      </list-item>
+      <list-item>
+
+        <div>
+          <input class="btn" type="button" value="登陆" onclick="routeDetail">
+        </div>
+      </list-item>
+      <list-item>
+        <text>账号：admin 密码：admin。数据库与小程序打通，需要注册、上传文件等功能，请看小程序代码，js写法是一模一样的。</text>
+      </list-item>
+    </list>
+
+
+
+
   </div>
 </template>
 
 <style>
-  .demo-page {
-    flex-direction: column;
+  #app {
+    width: 100%;
+
+    background-color: #eeeeee;
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+
+  }
+
+  .container {
+
+    width: 100%;
+    height: 500px;
+  }
+
+  .container list-item {
+    /* height: 50px; */
+    align-content: center;
     justify-content: center;
     align-items: center;
+    padding-top: 20px;
+  }
+
+  .container list-item div {
+    /* background-color:paleturquoise; */
+    align-items: center;
+  }
+
+  .container list-item label {
+    font-size: 40px;
+    padding-right: 8px;
+    /* background-color:red; */
+    text-align: right;
+    width: 20%;
+  }
+
+  .container list-item .list-input {
+    width: 60%;
+    padding: 5px 8px;
+    font-size: 30px;
+    border: 1px solid #cccccc;
+  }
+
+
+
+  .demo-page {
+    background-color: red;
+    width: 100%;
   }
 
   .title {
@@ -28,20 +119,95 @@
     font-size: 30px;
     color: #ffffff;
   }
+
+  .iheader {
+    color: #ffffff;
+
+    height: 350px;
+    width: 100%;
+    background-color: #3891f8;
+    text-align: center;
+  }
+
+  .list-top {
+    padding-top: 100px;
+  }
+
+  .iheader text {
+    width: 100%;
+    text-align: center;
+    font-size: 40px;
+    color: #ffffff;
+  }
+
+
+
+
+  .h50 {
+    padding-top: 50px;
+  }
 </style>
 
 <script>
+  const prompt = require('@system.prompt')
   import router from '@system.router'
+  const notification = require('@system.notification')
+  import Bmob from '../assets/js/Bmob-hap.1.1.1.min.js'
 
+  Bmob.initialize(
+    '39ee83f92ff3a195130596a4eaec5ddf',
+    'a1223fca87f5d229953817f5c2493446'
+  )
   export default {
     data: {
-      title: '示例页面'
+      title: 'Bmob后端云',
+      u: '',
+      p: '',
     },
-    routeDetail () {
-      // 跳转到应用内的某个页面，router用法详见：文档->接口->页面路由
-      router.push ({
-        uri: '/DemoDetail'
+    onInit() {
+      notification.show({
+        contentTitle: 'title',
+        contentText: 'content',
+        clickAction: {
+          uri: '/DemoDetail'
+        }
       })
+      // router.push({
+      //     uri: '/DemoDetail'
+      //   })
+    },
+    getU(e) {
+      this.u = e.text
+    },
+    getP(e) {
+      this.p = e.text
+    },
+    routeDetail(e) {
+      console.log('ks', this.u, this.p)
+      Bmob.User.login(this.u, this.p).then(res => {
+        console.log(res.code, 88)
+        if (res.code) {
+          console.log('登陆失败', JSON.stringify(res))
+          prompt.showToast({
+            message: JSON.stringify(res)
+          })
+          return
+        }
+        prompt.showToast({
+          message: '登陆成功',
+          success: function (data) {
+            console.log('ok')
+          }
+        })
+        router.push({
+          uri: '/DemoDetail'
+        })
+
+      }).catch(err => {
+        console.log('登陆失败', err)
+      });
+
+
     }
   }
 </script>

@@ -48,7 +48,7 @@
 /***/ 0:
 /***/ function(module, exports, __webpack_require__) {
 
-	var $app_script$ = __webpack_require__(10)
+	var $app_script$ = __webpack_require__(12)
 	
 	$app_define$('@app-application/app', [], function($app_require$, $app_exports$, $app_module$){
 	     $app_script$($app_module$, $app_exports$, $app_require$)
@@ -57,12 +57,12 @@
 	        }
 	})
 	
-	$app_bootstrap$('@app-application/app',{ packagerVersion: '0.0.2'})
+	$app_bootstrap$('@app-application/app',{ packagerVersion: '0.0.5'})
 
 
 /***/ },
 
-/***/ 10:
+/***/ 12:
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = function(module, exports, $app_require$){'use strict';
@@ -71,7 +71,7 @@
 	  value: true
 	});
 	
-	var _util = __webpack_require__(11);
+	var _util = __webpack_require__(13);
 	
 	var _util2 = _interopRequireDefault(_util);
 	
@@ -81,12 +81,12 @@
 	  showMenu: _util2.default.showMenu,
 	  createShortcut: _util2.default.createShortcut
 	};
-	(exports.default || module.exports).manifest = {"package":"com.application.demo","name":"test1","versionName":"1.0.0","versionCode":"1","minPlatformVersion":"101","icon":"/Common/logo.png","features":[{"name":"system.prompt"},{"name":"system.router"},{"name":"system.shortcut"}],"permissions":[{"origin":"*"}],"config":{"logLevel":"off"},"router":{"entry":"Demo","pages":{"Demo":{"component":"index"},"DemoDetail":{"component":"index"},"About":{"component":"index"}}},"display":{"titleBarBackgroundColor":"#f2f2f2","titleBarTextColor":"#414141","menu":true,"pages":{"Demo":{"titleBarText":"示例页","menu":false},"DemoDetail":{"titleBarText":"详情页"},"About":{"menu":false}}}};
+	(exports.default || module.exports).manifest = {"package":"com.application.demo","name":"testk9","versionName":"1.0.0","versionCode":"1","minPlatformVersion":"101","icon":"/Common/logo.png","features":[{"name":"system.prompt"},{"name":"system.router"},{"name":"system.request"},{"name":"system.notification"},{"name":"system.fetch"},{"name":"system.storage"},{"name":"system.shortcut"}],"permissions":[{"origin":"*"}],"config":{"logLevel":"debug"},"router":{"entry":"Demo","pages":{"DemoDetail":{"component":"index"},"Demo":{"component":"index"},"About":{"component":"index"}}},"display":{"titleBarBackgroundColor":"#f2f2f2","titleBarTextColor":"#414141","menu":true,"pages":{"Demo":{"titleBarText":"Bmob后端云","menu":true},"DemoDetail":{"titleBarText":"Bmob后端云-详情页"},"About":{"menu":true}}}};
 	}
 
 /***/ },
 
-/***/ 11:
+/***/ 13:
 /***/ function(module, exports) {
 
 	'use strict';
@@ -166,7 +166,7 @@
   else {
     window.createAppHandler = createAppHandler
     // H5注入manifest以获取features
-    global.manifest = {"package":"com.application.demo","name":"test1","versionName":"1.0.0","versionCode":"1","minPlatformVersion":"101","icon":"/Common/logo.png","features":[{"name":"system.prompt"},{"name":"system.router"},{"name":"system.shortcut"}],"permissions":[{"origin":"*"}],"config":{"logLevel":"off"},"router":{"entry":"Demo","pages":{"Demo":{"component":"index"},"DemoDetail":{"component":"index"},"About":{"component":"index"}}},"display":{"titleBarBackgroundColor":"#f2f2f2","titleBarTextColor":"#414141","menu":true,"pages":{"Demo":{"titleBarText":"示例页","menu":false},"DemoDetail":{"titleBarText":"详情页"},"About":{"menu":false}}}};
+    global.manifest = {"package":"com.application.demo","name":"testk9","versionName":"1.0.0","versionCode":"1","minPlatformVersion":"101","icon":"/Common/logo.png","features":[{"name":"system.prompt"},{"name":"system.router"},{"name":"system.request"},{"name":"system.notification"},{"name":"system.fetch"},{"name":"system.storage"},{"name":"system.shortcut"}],"permissions":[{"origin":"*"}],"config":{"logLevel":"debug"},"router":{"entry":"Demo","pages":{"DemoDetail":{"component":"index"},"Demo":{"component":"index"},"About":{"component":"index"}}},"display":{"titleBarBackgroundColor":"#f2f2f2","titleBarTextColor":"#414141","menu":true,"pages":{"Demo":{"titleBarText":"Bmob后端云","menu":true},"DemoDetail":{"titleBarText":"Bmob后端云-详情页"},"About":{"menu":true}}}};
   }
 })();
 //# sourceMappingURL=app.js.map

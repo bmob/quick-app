@@ -60,7 +60,7 @@
 	     $app_module$.exports.style = $app_style$
 	})
 	
-	$app_bootstrap$('@app-component/index',{ packagerVersion: '0.0.2'})
+	$app_bootstrap$('@app-component/index',{ packagerVersion: '0.0.5'})
 
 
 /***/ },

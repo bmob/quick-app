@@ -2,6 +2,15 @@
   <!-- template里只能有一个根节点 -->
   <div class="demo-page">
     <text class="title">{{text}}</text>
+    <!-- <text for="{{(index, value) in info}}">
+         <text>{{$idx}}</text>
+         <text>{{$value}}</text>
+      </text> -->
+      <text for="{{list}}" tid="id">
+          <text>{{$idx}}</text>
+          <text>{{$item.id}}</text>
+       </text>
+
   </div>
 </template>
 
@@ -19,9 +28,17 @@
 </style>
 
 <script>
+   import Bmob from '../assets/js/Bmob-hap.1.1.1.min.js'
   export default {
     data: {
-      text: '欢迎打开详情页'
+      text: '登陆后你的用户信息，打印在console'
+    },
+    onInit(){
+      Bmob.User.current().then(res=>{
+        console.log('您的用户信息',JSON.stringify(res))
+      }).catch(err=>{
+        console.log('err',JSON.stringify(err))
+      })
     },
     /**
      * 当用户点击菜单按钮时触发，调用app中定义的方法showMenu
